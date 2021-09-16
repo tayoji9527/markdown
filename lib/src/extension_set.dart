@@ -25,7 +25,7 @@ class ExtensionSet {
   /// [CommonMark]: http://commonmark.org/
   static final ExtensionSet commonMark = ExtensionSet(
     List<BlockSyntax>.unmodifiable(
-      <BlockSyntax>[const FencedCodeBlockSyntax()],
+      <BlockSyntax>[FencedCodeBlockSyntax()],
     ),
     List<InlineSyntax>.unmodifiable(
       <InlineSyntax>[InlineHtmlSyntax()],
@@ -44,7 +44,7 @@ class ExtensionSet {
   static final ExtensionSet gitHubWeb = ExtensionSet(
     List<BlockSyntax>.unmodifiable(
       <BlockSyntax>[
-        const FencedCodeBlockSyntax(),
+        FencedCodeBlockSyntax(),
         const HeaderWithIdSyntax(),
         const SetextHeaderWithIdSyntax(),
         const TableSyntax(),
@@ -67,7 +67,7 @@ class ExtensionSet {
   static final ExtensionSet gitHubFlavored = ExtensionSet(
     List<BlockSyntax>.unmodifiable(
       <BlockSyntax>[
-        const FencedCodeBlockSyntax(),
+        FencedCodeBlockSyntax(),
         const TableSyntax(),
       ],
     ),

@@ -16,6 +16,7 @@ abstract class Node {
 /// A named tag that can contain other nodes.
 class Element implements Node {
   final String tag;
+  String? label;
   final List<Node>? children;
   final Map<String, String> attributes;
   String? generatedId;

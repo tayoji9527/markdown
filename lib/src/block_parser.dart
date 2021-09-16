@@ -152,6 +152,7 @@ class BlockParser {
       for (var syntax in blockSyntaxes) {
         if (syntax.canParse(this)) {
           var block = syntax.parse(this);
+
           if (block != null) blocks.add(block);
           break;
         }
@@ -432,8 +433,9 @@ class CodeBlockSyntax extends BlockSyntax {
 class FencedCodeBlockSyntax extends BlockSyntax {
   @override
   RegExp get pattern => _codeFencePattern;
+  String? label;
 
-  const FencedCodeBlockSyntax();
+  FencedCodeBlockSyntax();
 
   @override
   bool canParse(BlockParser parser) {
@@ -441,6 +443,7 @@ class FencedCodeBlockSyntax extends BlockSyntax {
     if (match == null) return false;
     final codeFence = match.group(1)!;
     final infoString = match.group(2);
+    label = infoString;
     // From the CommonMark spec:
     //
     // > If the info string comes after a backtick fence, it may not contain
@@ -505,7 +508,7 @@ class FencedCodeBlockSyntax extends BlockSyntax {
     }
 
     var element = Element('pre', [code]);
-
+    element.label = label;
     return element;
   }
 }
